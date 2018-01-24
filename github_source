@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+. ./pull_push
+
+# Add your repository name in repositories section
+REPOSITORIES=('git_pull_push' )
+cd ..
+echo $PWD
+for i in "${REPOSITORIES[@]}"
+do
+    echo "$i"
+    cd "$i"
+    pull_push_github
+done

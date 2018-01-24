@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+pull_push_github()
+{
+echo "Please write PULL or PUSH : "
+while :
+do
+    read INPUT_STRING
+    case $INPUT_STRING in
+         pull )
+            echo "Your are pulling from GitHub (y\n) :"
+            read pull_ack
+            if [ "$pull_ack" == 'y' ] || [ "$pull_ack" == 'Y' ];
+            then
+                git pull
+            elif [ "$pull_ack" == 'n' ] || [ "$pull_ack" == 'N' ];
+                then
+                    echo "You don't want to pull from GitHub"
+                    # Terminate our shell script with success message
+                    exit 0
+            else
+                echo " Please Enter yY or nN "
+            fi
+            ;;
+
+
+         push )
+             echo "You are Pushing to GitHub (y\n)  :"
+             read push_ack
+             if [ "$push_ack" == 'y' ] || [ "$push_ack" == 'Y' ];
+                then
+                    echo "Add Files or Folders : "
+                    read add_files
+                    git add "$add_files"
+                    echo "Enter Commit Message : "
+                    read message
+                    git commit -m "$message"
+                    git push -u origin master
+             elif [ "$push_ack" == 'n' ] || [ "$push_ack" == 'N' ];
+                then
+                    echo "Your Project source wouldn't push to GitHub "
+                    echo "Better Luck Next Time"
+                    # Terminate our shell script with success message
+                    exit 0
+             else
+                echo " Please Enter yY or nN "
+
+              fi
+              ;;
+          * )
+             echo "Sorry, I don't understand, Please enter pull or push ! "
+             ;;
+
+    esac
+done
+}
+
+

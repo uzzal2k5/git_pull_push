@@ -1,0 +1,12 @@
+#!/bin/bash
+sms()
+{
+echo "Enter Commit Message : "
+read message
+if [ "$message" == 'a' ] || [ "$message" == 'A' ];
+then
+  echo "Your Message is : $message"
+else 
+  echo "Please enter aA :"
+fi
+}
