@@ -13,8 +13,8 @@ echo " Git Push Pull Service are Started !  "
 #. ./config/settings
 . ./pull_push
 
-# Arry create with repository name in repositories section
-# REPOSITORIES=('name_your_repo')
+# Array create with repository name in repositories section
+
 REPOSITORIES=()
 while IFS=$'\n' read -a repository
 do
@@ -27,7 +27,7 @@ cd ..
 for repo in "${REPOSITORIES[@]}"
 do
     echo "$repo"
-    read -p "Giting $repo! [ Space to continue or i to ignore ] : "  repo_ack
+    read -p "Giting $repo! [ C to Continue or i to Ignore ] : "  repo_ack
     if [ "$repo_ack" == 'c' ] || [ "$repo_ack" == 'C' ];
     then
         cd "$repo"
@@ -41,5 +41,5 @@ do
     else
         echo "Please, Press Enter button to selecting repository or i to Ignore  "
     fi
-    
+
 done
