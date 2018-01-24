@@ -1,15 +1,30 @@
 #!/usr/bin/env bash
+#***********************************************************#
+#                                                           #
+#                                                           #
+# Creator: Md Shafiqul Islam, System Analyst - DevOps       #
+# Contacts :  uzzal2k5@gmail.com , +8801715519132           #
+#                                                           #
+#                                                           #
+#                                                           #
+#                                                           #
+#***********************************************************#
+#. ./config/settings
 . ./pull_push
 
-# Add your repository name in repositories section
-REPOSITORIES=('git_pull_push' )
+# Arry create with repository name in repositories section
+REPOSITORIES=()
+while IFS=$'\n' read -a repository
+do
+ REPOSITORIES+=(${repository})
+done < ./config/pull_push.conf
 
 # Start Pushing or Pulling project source to git
 cd ..
 #echo $PWD
 for i in "${REPOSITORIES[@]}"
 do
-    #echo "$i"
+    echo "$i"
     cd "$i"
     pull_push_github
     exit 0

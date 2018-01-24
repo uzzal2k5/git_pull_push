@@ -10,3 +10,16 @@ else
   echo "Please enter aA :"
 fi
 }
+REPOSITORIES=()
+while IFS=$'\n' read -a repository
+do
+ REPOSITORIES+=(${repository})
+done < ./config/pull_push.conf
+
+for i in "${REPOSITORIES[@]}"
+do
+    echo "$i"
+    #cd "$i"
+    sms
+    exit 0
+done
