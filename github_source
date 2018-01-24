@@ -3,11 +3,14 @@
 
 # Add your repository name in repositories section
 REPOSITORIES=('git_pull_push' )
+
+# Start Pushing or Pulling project source to git
 cd ..
-echo $PWD
+#echo $PWD
 for i in "${REPOSITORIES[@]}"
 do
     echo "$i"
     cd "$i"
     pull_push_github
+    exit 0
 done
