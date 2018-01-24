@@ -6,7 +6,7 @@ read message
 if [ "$message" == 'a' ] || [ "$message" == 'A' ];
 then
   echo "Your Message is : $message"
-else 
+ else
   echo "Please enter aA :"
 fi
 }
@@ -20,6 +20,6 @@ for i in "${REPOSITORIES[@]}"
 do
     echo "$i"
     #cd "$i"
-    sms
-    exit 0
+    #sms
+    #exit 0
 done

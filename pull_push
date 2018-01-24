@@ -12,25 +12,24 @@
 
 pull_push_github()
 {
-echo " Git Push Pull Service are Started !  "
 # read -p : here -p use to read  inline input
 read -p "Please write PULL or PUSH : " INPUT_STRING
 while :
 do
     case $INPUT_STRING in
          pull )
-            read -p  "Your are pulling from GitHub (y\n) :  " pull_ack
+            read -p  "Your are pulling from GitHub (Y\N) :  " pull_ack
 
             if [ "$pull_ack" == 'y' ] || [ "$pull_ack" == 'Y' ];
             then
                 echo "pulling from git in progress .. "
                 git pull
-                exit 0
+                return 1
             elif [ "$pull_ack" == 'n' ] || [ "$pull_ack" == 'N' ];
                 then
                     echo "You don't want to pull from GitHub"
                     # Terminate our shell script with success message
-                    exit 0
+                    return 1
             else
                 echo " Please Enter yY or nN "
             fi
@@ -38,7 +37,7 @@ do
 
 
          push )
-             read -p  "You are Pushing to GitHub (y\n)  :  " push_ack
+             read -p  "You are Pushing to GitHub (Y\N)  :  " push_ack
              if [ "$push_ack" == 'y' ] || [ "$push_ack" == 'Y' ];
                 then
                     read -p  "Add Files or Folders : " add_files
@@ -47,13 +46,13 @@ do
                     git commit -m "$message"
                     read -p "Chose branch name : " branch
                     git push -u origin "$branch"
-                    exit 0
+                    return 1
              elif [ "$push_ack" == 'n' ] || [ "$push_ack" == 'N' ];
                 then
                     echo "Your Project source wouldn't push to GitHub "
                     echo "Better Luck Next Time"
                     # Terminate our shell script with success message
-                    exit 0
+                    return 1
              else
                 echo " Please Enter yY or nN "
 

@@ -9,10 +9,12 @@
 #                                                           #
 #                                                           #
 #***********************************************************#
+echo " Git Push Pull Service are Started !  "
 #. ./config/settings
 . ./pull_push
 
 # Arry create with repository name in repositories section
+# REPOSITORIES=('name_your_repo')
 REPOSITORIES=()
 while IFS=$'\n' read -a repository
 do
@@ -22,10 +24,22 @@ done < ./config/pull_push.conf
 # Start Pushing or Pulling project source to git
 cd ..
 #echo $PWD
-for i in "${REPOSITORIES[@]}"
+for repo in "${REPOSITORIES[@]}"
 do
-    echo "$i"
-    cd "$i"
-    pull_push_github
-    #exit 0
+    echo "$repo"
+    read -p "Giting $repo! [ Space to continue or i to ignore ] : "  repo_ack
+    if [ "$repo_ack" == 'c' ] || [ "$repo_ack" == 'C' ];
+    then
+        cd "$repo"
+        echo $PWD
+        pull_push_github
+        cd ..
+    elif [ "$repo_ack" == "i" ] || [ "$repo_ack" == "I" ];
+        then
+            echo " You are ignoring  $i  "
+            #return 1
+    else
+        echo "Please, Press Enter button to selecting repository or i to Ignore  "
+    fi
+    
 done
