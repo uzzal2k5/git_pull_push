@@ -35,6 +35,7 @@ do
                     read message
                     git commit -m "$message"
                     git push -u origin master
+                    exit 0
              elif [ "$push_ack" == 'n' ] || [ "$push_ack" == 'N' ];
                 then
                     echo "Your Project source wouldn't push to GitHub "
