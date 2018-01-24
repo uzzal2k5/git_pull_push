@@ -7,8 +7,8 @@ do
     read INPUT_STRING
     case $INPUT_STRING in
          pull )
-            echo "Your are pulling from GitHub (y\n) :"
-            read pull_ack
+            echo "Your are pulling from GitHub (y\n) :"  read pull_ack
+
             if [ "$pull_ack" == 'y' ] || [ "$pull_ack" == 'Y' ];
             then
                 git pull
