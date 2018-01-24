@@ -34,7 +34,8 @@ do
                     git add "$add_files"
                     read -p "Enter Commit Message :  " message
                     git commit -m "$message"
-                    git push -u origin master
+                    read -p "Chose branch name : " branch
+                    git push -u origin "$branch"
                     exit 0
              elif [ "$push_ack" == 'n' ] || [ "$push_ack" == 'N' ];
                 then
