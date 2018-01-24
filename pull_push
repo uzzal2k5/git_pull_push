@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
 pull_push_github()
 {
-echo "Please write PULL or PUSH : "
+echo " Git Push Pull Service are Started !  "
+# read -p : here -p use to read  inline input
+read -p "Please write PULL or PUSH : " INPUT_STRING
 while :
 do
-    read INPUT_STRING
     case $INPUT_STRING in
          pull )
-            echo "Your are pulling from GitHub (y\n) :"  read pull_ack
+            read -p  "Your are pulling from GitHub (y\n) :  " pull_ack
 
             if [ "$pull_ack" == 'y' ] || [ "$pull_ack" == 'Y' ];
             then
+                echo "pulling from git in progress .. "
                 git pull
+                exit 0
             elif [ "$pull_ack" == 'n' ] || [ "$pull_ack" == 'N' ];
                 then
                     echo "You don't want to pull from GitHub"
@@ -24,15 +27,12 @@ do
 
 
          push )
-             echo "You are Pushing to GitHub (y\n)  :"
-             read push_ack
+             read -p  "You are Pushing to GitHub (y\n)  :  " push_ack
              if [ "$push_ack" == 'y' ] || [ "$push_ack" == 'Y' ];
                 then
-                    echo "Add Files or Folders : "
-                    read add_files
+                    read -p  "Add Files or Folders : " add_files
                     git add "$add_files"
-                    echo "Enter Commit Message : "
-                    read message
+                    read -p "Enter Commit Message :  " message
                     git commit -m "$message"
                     git push -u origin master
                     exit 0

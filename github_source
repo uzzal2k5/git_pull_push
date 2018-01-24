@@ -9,7 +9,7 @@ cd ..
 #echo $PWD
 for i in "${REPOSITORIES[@]}"
 do
-    echo "$i"
+    #echo "$i"
     cd "$i"
     pull_push_github
     exit 0
